@@ -12,12 +12,12 @@ import (
 )
 
 type Region struct {
-	name     string
-	endpoint string
+	Name     string
+	Endpoint string
 }
 
 func (r *Region) url() string {
-	return "https://" + r.endpoint
+	return "https://" + r.Endpoint
 }
 
 var (
@@ -41,7 +41,7 @@ func NewTable(name string, region *Region, awsAccessKeyId string,
 	awsSecretAccessKey string, debugMode bool) *Table {
 
 	k := &aws4.Keys{AccessKey: awsAccessKeyId, SecretKey: awsSecretAccessKey}
-	s := &aws4.Service{Name: "dynamodb", Region: region.name}
+	s := &aws4.Service{Name: "dynamodb", Region: region.Name}
 	return &Table{name, region, k, s, debugMode}
 }
 
